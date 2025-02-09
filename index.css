@@ -1,1 +1,8 @@
-
+footer{
+    /* height: auto; */
+    width: auto;
+    background-color: #131A22;
+}
+header{
+    color: pink;
+}

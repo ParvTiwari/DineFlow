@@ -48,6 +48,7 @@ footer{
 }
 main{
     padding: 20px;
+    background-color: rgb(254, 250, 245)
 }
 section{
     display: inline-flex;

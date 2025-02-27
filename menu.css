@@ -94,6 +94,5 @@ button:hover{
     background-color: #218c5c;
 }
 .menu-item:hover{
-    transition: ;
     box-shadow: 2px 2px 10px rgb(43, 33, 33);
 }

@@ -64,7 +64,17 @@ header{
     padding: 50px;
     position: relative;
     top: 50px;
-    animation: fadeIn 0.5s forwards;
+    animation: textAnimate ease-out 0.5s 1 forwards normal;
+}
+@keyframes textAnimate {
+    from{
+        transform: translateX(-10px);
+        opacity: 0;
+    }
+    to{
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 .contact_us{
     text-align: center;

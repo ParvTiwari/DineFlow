@@ -63,6 +63,9 @@ div div{
     flex-wrap: wrap;
     border-radius: 8px;
     height: 200px;
-    margin: 48px;
     padding: 48px;
+    margin: 30px 80px 0px 80px;
+}
+div div h1{
+    padding-bottom: 30px;
 }

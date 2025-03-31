@@ -58,14 +58,21 @@ header{
     font-weight: 400;
     font-style: normal;
 }
-div div{
+.container{
     background-color: #EEEEEF;
-    flex-wrap: wrap;
-    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
     height: 200px;
     padding: 48px;
     margin: 30px 80px 0px 80px;
 }
-div div h1{
+.text{
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px;
+}
+.container div h1{
     padding-bottom: 30px;
 }

@@ -35,6 +35,7 @@ nav img{
     margin-left: 20px;
 }
 footer{
+    margin-top: 50px;
     text-align: center;
     background-color: rgb(41 52 61);
     color: white;
@@ -75,4 +76,8 @@ header{
 }
 .container div h1{
     padding-bottom: 30px;
+}
+.container img{
+    height: 130%;
+    border-radius: 10px;
 }

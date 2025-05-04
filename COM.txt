@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .cart {
+            margin-top: 20px;
+            padding: 10px;
+            background: #ffcc00;
+            border-radius: 5px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+        }
+        .remove-btn {
+            margin-left: 10px;
+            padding: 3px 7px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .remove-btn:hover {
+            background: #c82333;
+        }
+        button {
+            padding: 5px 10px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Restaurant Menu</h1>
+        <input type="text" id="search" placeholder="Search for food..." onkeyup="filterMenu()">
+        <div id="menu-list">
+            <div class="menu-item" data-category="pizza">Margherita Pizza - $12 <button onclick="addToCart('Margherita Pizza', 12)">Add to Cart</button></div>
+            <div class="menu-item" data-category="burger">Cheeseburger - $10 <button onclick="addToCart('Cheeseburger', 10)">Add to Cart</button></div>
+            <div class="menu-item" data-category="pasta">Spaghetti Carbonara - $15 <button onclick="addToCart('Spaghetti Carbonara', 15)">Add to Cart</button></div>
+            <div class="menu-item" data-category="dessert">Chocolate Cake - $8 <button onclick="addToCart('Chocolate Cake', 8)">Add to Cart</button></div>
+        </div>
+        <div class="cart">
+            <h2>Cart</h2>
+            <div id="cart-items"></div>
+            <p><strong>Total: $<span id="total-price">0</span></strong></p>
+        </div>
+    </div>
+    
+    <script>
+        let cart = [];
+        
+        function filterMenu() {
+            let input = document.getElementById("search").value.toLowerCase();
+            let items = document.querySelectorAll(".menu-item");
+            
+            items.forEach(item => {
+                if (item.textContent.toLowerCase().includes(input)) {
+                    item.style.display = "flex";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        }
+
+        function addToCart(itemName, itemPrice) {
+            let existingItem = cart.find(item => item.name === itemName);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name: itemName, price: itemPrice, quantity: 1 });
+            }
+            updateCart();
+        }
+
+        function removeFromCart(index) {
+            if (cart[index].quantity > 1) {
+                cart[index].quantity -= 1;
+            } else {
+                cart.splice(index, 1);
+            }
+            updateCart();
+        }
+
+        function updateCart() {
+            let cartItems = document.getElementById("cart-items");
+            let totalPrice = document.getElementById("total-price");
+            cartItems.innerHTML = "";
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                let div = document.createElement("div");
+                div.classList.add("cart-item");
+                div.innerHTML = `${item.name} (x${item.quantity}) - $${item.price * item.quantity} <button class='remove-btn' onclick='removeFromCart(${index})'>X</button>`;
+                cartItems.appendChild(div);
+                total += item.price * item.quantity;
+            });
+            
+            totalPrice.textContent = total;
+        }
+    </script>
+</body>
+</html>

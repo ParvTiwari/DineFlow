@@ -1,0 +1,19 @@
+{
+  "name": "dineflow",
+  "version": "1.0.0",
+  "description": "A Smart Restaurant Management web application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ParvTiwari/DineFlow.git"
+  },
+  "author": "Parv Tiwari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ParvTiwari/DineFlow/issues"
+  },
+  "homepage": "https://github.com/ParvTiwari/DineFlow#readme"
+}

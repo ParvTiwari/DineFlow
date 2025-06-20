@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Cart | DineFlow</title>
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+<header>
+    <nav>
+        <div><a href="/home">DineFlow</a></div>
+        <div>
+            <a href="/menu">Menu</a>
+            <a href="/cart">Cart</a>
+            <a href="/">Logout</a>
+        </div>
+    </nav>
+</header>
+
+<div class="cart-container">
+    <h2>Your Cart</h2>
+
+    <% if (cartItems.length === 0) { %>
+        <p>Your cart is empty 😕</p>
+    <% } else { %>
+        <% cartItems.forEach(item => { %>
+            <div class="cart-item">
+                <div class="item-info">
+                    <h4><%= item.name %></h4>
+                    <p>₹ <%= item.price %></p>
+                </div>
+                <div class="item-actions">
+                    <input type="number" min="1" value="<%= item.quantity %>">
+                    <form method="POST" action="/remove-from-cart">
+                        <input type="hidden" name="itemId" value="<%= item.id %>">
+                        <button type="submit">Remove</button>
+                    </form>
+                </div>
+            </div>
+        <% }) %>
+
+        <div class="cart-total">
+            Total: ₹ <%= cartItems.reduce((total, item) => total + item.price * item.quantity, 0) %>
+        </div>
+
+        <form action="/payment" method="GET">
+            <button class="checkout-btn">Checkout</button>
+        </form>
+    <% } %>
+</div>
+</body>
+</html>

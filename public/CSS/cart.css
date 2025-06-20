@@ -1,0 +1,70 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2c3e50;
+    padding: 1rem 2rem;
+}
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: 500;
+}
+.cart-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 1rem 0;
+}
+.cart-item:last-child {
+    border-bottom: none;
+}
+.item-info {
+    flex: 1;
+}
+.item-info h4 {
+    margin: 0;
+}
+.item-actions {
+    display: flex;
+    align-items: center;
+}
+.item-actions input {
+    width: 50px;
+    margin-right: 1rem;
+    text-align: center;
+}
+.cart-total {
+    text-align: right;
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.checkout-btn {
+    display: block;
+    margin-left: auto;
+    margin-top: 1rem;
+    padding: 0.8rem 2rem;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+}

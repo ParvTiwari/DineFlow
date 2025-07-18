@@ -22,33 +22,20 @@
     <body>
         <div class="container" id="container">
             <div class="sign-up">
-                <form>
+                <form method="post" action="/register" onsubmit="return validateSignup();">
                     <h1>Create Account</h1>
-                    <div class="icons">
-                        <a href="#" class="icon"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="icon"><i class="fa-brands fa-google"></i></a>
-                        <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-                    </div>
-                    <span>or use email for registeration</span>
-                    <input type="text" placeholder="Name" />
-                    <input type="text" placeholder="Email" />
-                    <input type="password" placeholder="Password" />
+                    <input type="text" placeholder="Name" name="name" required/>
+                    <input type="email" placeholder="Email" name="email" required/>
+                    <input type="number" placeholder="Mobile Number" name="number" required/>
+                    <input type="password" placeholder="Password" minlength="6" name="password" required/>
                     <button>Sign Up</button>
                 </form>
             </div>
             <div class="sign-in">
-                    <form>
+                    <form method="post" action="/login">
                         <h1>Sign In</h1>
-                        <div class="icons">
-                            <a href="#" class="icon"><i class="fa-brands fa-facebook"></i></a>
-                            <a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a>
-                            <a href="#" class="icon"><i class="fa-brands fa-google"></i></a>
-                            <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-                        </div>
-                        <span>or use email password</span>
-                        <input type="text" placeholder="Email" />
-                        <input type="password" placeholder="Password" />
+                        <input type="email" placeholder="Email" name="email" required/>
+                        <input type="password" placeholder="Password" name="password" required/>
                         <a href="#">Forgot password</a>
                         <button>Sign In</button>
                     </form>

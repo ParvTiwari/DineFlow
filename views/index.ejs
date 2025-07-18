@@ -10,28 +10,12 @@
     <title>DineFlow-Smart Restaurant System</title>
 </head>
 <body>
-    <header>
-        <nav>
-            <img src="logo.png" style="justify-content: left;">
-            <div class="nav-links">
-                <a href= "/home">Home</a>
-                <a href="/menu">Menu</a>
-                <a href="/offers">Offers</a>
-                <a href="/contact">Contact Us</a>
-                <a href="/about">About</a>
-                <a href="/cart">Cart</a>
-                <a href="/">Logout</a>
-            </div>
-            <!-- <div id="floatRight">
-                <a href="cart.html">Cart</a>
-                <a href="login.html">Logout</a>
-            </div> -->
-        </nav>
-    </header>
+    <%- include("includes/navBar.ejs") %>
     <main>
         <div class="bg">
             <h1>Welcome to DineFlow!</h1>
         </div>
+
         <div class="contact_us">
             <h2>Contact Us</h2>
             <h4 class="lilita-one-regular">Let Us Help!</h4>
@@ -49,16 +33,26 @@
                 </div>
                 <div>
                     <h3>Phone</h3>
-                    <p>Parv Tiwari: 92851 21000</p>
+                    <p>Parv Tiwari: <a href="tel:+919285121000">92851 21000</a></p>
                 </div>
             </div>
-        </div>        
-    </main>
-    <footer>
-        <div>
-            <h3>&copy; 2025 DineFlow. All Rights Reserved.</h3>
-            <h3>Created by- <b>Parv Tiwari</b></h3>
         </div>
-    </footer>
+        
+        <div class="review">
+            <h2>Leave a Review</h2>
+            <form method="post" action="/home/review" onsubmit="return validateForm();">
+                <input type="text" placeholder="Your Name" name="name" required>
+    
+                <input type="email" placeholder="Your Email" name="email" required>
+                
+                <input type="number" placeholder="Your Mobile Number" name="number" required>
+                <br>
+                <textarea rows="5" placeholder="Your feedback..." name="feedback" required></textarea>
+                <button>Submit Review</button>
+            </form>
+        </div>
+    </main>
+    <%- include("includes/footer.ejs") %>
+    <script src="home.js"></script>
 </body>
 </html>

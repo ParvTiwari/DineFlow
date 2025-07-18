@@ -1,0 +1,18 @@
+<header>
+        <nav>
+            <img src="logo.png" style="justify-content: left;">
+            <a class="nav-links" href= "/home">Home</a>
+            <a class="nav-links" href="/menu">Menu</a>
+            <a class="nav-links" href="/offers">Offers</a>
+            <a class="nav-links" href="/about">About</a>
+            <a class="nav-links" href="/cart">Cart</a>
+            <% if (user) { %>
+                <form action="/logout" method="POST" style="display:inline;">
+                    <button class="nav-links logout-btn">Logout</button>
+                </form>
+            <% } else { %>
+                <a class="nav-links" href="/login">Login</a>
+            <% } %>
+
+        </nav>
+</header>

@@ -13,6 +13,25 @@ a{
     text-align: center;
     background-color: inherit;
 }
+.nav-links:hover{
+    text-decoration: underline;
+}
+button.logout-btn.nav-links {
+    all: unset; /* removes all default button styles */
+    cursor: pointer;
+    padding: 20px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1em;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+    background-color: inherit;
+}
+
+button.logout-btn.nav-links:hover {
+    text-decoration: underline;
+}
 main{
     background-color: rgb(254, 250, 245)
 }
@@ -108,6 +127,14 @@ header{
 .details div h3{
     padding-bottom: 10px;
 }
+.details a{
+    all:unset;
+    font: inherit;
+    color: inherit;
+}
+.details a:hover {
+    color: blue;
+}
 .lilita-one-regular {
     font-family: "Lilita One", sans-serif;
     font-weight: 400;
@@ -118,14 +145,56 @@ header{
     font-weight: 400;
     font-style: normal;
 }
-#floatRight{
-    display: flex;
-    gap: 15px;
-    float: right;
+
+.review {
+  background-color: #fffaf0;
+  padding: 40px 30px;
+  max-width: 500px;
+  margin: 50px auto;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
 }
-.nav-links {
-    display: flex;
-    gap: 20px;
-    flex-grow: 1;
-    justify-content: center;
+
+.review h2 {
+  margin-bottom: 20px;
+  font-size: 26px;
+  color: #333;
+}
+
+.review form input,
+.review form textarea {
+  width: 90%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: inherit;
+  transition: 0.2s ease;
+}
+
+.review form input:focus,
+.review form textarea:focus {
+  border-color: #ff9900;
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 153, 0, 0.4);
+}
+
+.review form button {
+  background-color: #ff9900;
+  color: white;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: 0.3s;
+}
+
+.review form button:hover {
+  background-color: #e58c00;
 }

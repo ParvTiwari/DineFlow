@@ -13,6 +13,25 @@ a{
     text-align: center;
     background-color: inherit;
 }
+.nav-links:hover{
+    text-decoration: underline;
+}
+button.logout-btn.nav-links {
+    all: unset; /* removes all default button styles */
+    cursor: pointer;
+    padding: 20px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1em;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+    background-color: inherit;
+}
+
+button.logout-btn.nav-links:hover {
+    text-decoration: underline;
+}
 main{
     background-color: rgb(254, 250, 245)
 }

@@ -1,0 +1,108 @@
+body {
+    margin: 0;
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    background-color: #222;
+    padding: 15px 40px;
+}
+
+header nav img {
+    height: 50px;
+    margin-right: auto;
+}
+
+.nav-links {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 10px;
+}
+
+.nav-links:hover {
+    text-decoration: underline;
+}
+
+.banner {
+    background: url('/images/banner-offer.jpg') center/cover no-repeat;
+    text-align: center;
+    color: white;
+    padding: 100px 20px;
+}
+
+.banner h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.banner p {
+    font-size: 1.2em;
+}
+
+.offers-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    padding: 50px 80px;
+    background-color: #fff;
+}
+
+.offer-card {
+    background-color: #f3f3f3;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.offer-card:hover {
+    transform: translateY(-5px);
+}
+
+.offer-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.offer-card h2 {
+    margin: 20px 15px 10px;
+    font-size: 1.4em;
+}
+
+.offer-card p {
+    margin: 0 15px 20px;
+    font-size: 0.95em;
+    color: #555;
+}
+
+.offer-card button {
+    margin: 0 15px 20px;
+    padding: 10px 20px;
+    background-color: #e63946;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.offer-card button:hover {
+    background-color: #d62828;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #222;
+    color: white;
+    font-size: 0.9em;
+}

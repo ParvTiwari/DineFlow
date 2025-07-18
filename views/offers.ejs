@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DineFlow Offers</title>
+    <link rel="stylesheet" href="offers.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+    <%- include("includes/navBar.ejs") %>
+
+    <section class="banner">
+        <h1>Exclusive Deals Just for You</h1>
+        <p>Enjoy discounts, seasonal specials & limited time offers!</p>
+    </section>
+
+    <section class="offers-container">
+        <div class="offer-card">
+            <img src="/images/offer1.jpg" alt="Offer 1" />
+            <h2>Buy 1 Get 1 Free</h2>
+            <p>On selected pizzas every Friday!</p>
+            <button>Claim Offer</button>
+        </div>
+
+        <div class="offer-card">
+            <img src="/images/offer2.jpg" alt="Offer 2" />
+            <h2>Flat 30% Off</h2>
+            <p>On your first online order.</p>
+            <button>Claim Offer</button>
+        </div>
+
+        <div class="offer-card">
+            <img src="/images/offer3.jpg" alt="Offer 3" />
+            <h2>Student Discount</h2>
+            <p>Show your student ID & get 20% off.</p>
+            <button>Claim Offer</button>
+        </div>
+
+        <div class="offer-card">
+            <img src="/images/offer4.jpg" alt="Offer 4" />
+            <h2>Combo Meals</h2>
+            <p>Enjoy meal combos starting at just ₹199.</p>
+            <button>Claim Offer</button>
+        </div>
+    </section>
+    <%- include("includes/footer.ejs") %>
+</body>
+</html>

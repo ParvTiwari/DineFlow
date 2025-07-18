@@ -1,6 +1,7 @@
 document.getElementById('payBtn').onclick = function (e) {
     var options = {
-        key: "rzp_live_aVKraUuMvOwNAS",
+        // key: "rzp_live_aVKraUuMvOwNAS",
+        key: "rzp_live_tt2CZGs6sxwVCG",
         amount: 100, // Amount in paise (₹500)
         currency: "INR",
         name: "DineFlow",

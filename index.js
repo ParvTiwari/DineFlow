@@ -16,11 +16,12 @@ const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   database: 'dineflow',
-  password: 'Parv@2004'
+  password: 'mysql@123'
 });
 
 let port = 8080;
 
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "/public/CSS")));
 app.use(express.static(path.join(__dirname, "/public/JS")));
 app.use(express.static(path.join(__dirname, "/public/images")));

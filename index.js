@@ -1,3 +1,4 @@
+require("dotenv").config();
 let express = require("express");
 let path = require("path");
 let app = express();
@@ -7,7 +8,7 @@ const session = require("express-session");
 
 // Session setup
 app.use(session({
-  secret: "dineflow_parv_tiwari",
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false
 }));
@@ -26,7 +27,7 @@ connection.connect((err) => {
   }
   console.log("Connected to database.");
 });
-let port = 8080;
+let port = process.env.PORT;
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "/public/CSS")));

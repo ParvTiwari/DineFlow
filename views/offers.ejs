@@ -10,40 +10,36 @@
 <body>
     <%- include("includes/navBar.ejs") %>
 
-    <section class="banner">
-        <h1>Exclusive Deals Just for You</h1>
-        <p>Enjoy discounts, seasonal specials & limited time offers!</p>
-    </section>
+    <main class="offers-main">
+        <h1 class="offers-title">Exclusive Offers Just for You!</h1>
 
-    <section class="offers-container">
-        <div class="offer-card">
-            <img src="/images/offer1.jpg" alt="Offer 1" />
-            <h2>Buy 1 Get 1 Free</h2>
-            <p>On selected pizzas every Friday!</p>
-            <button>Claim Offer</button>
+        <div class="offers-container">
+            <div class="offer-card">
+                <img src="offer1.jpeg" alt="Offer 1">
+                <div class="offer-details">
+                    <h2>Flat 20% Off</h2>
+                    <p>Enjoy 20% off on your first dine-in experience with DineFlow!</p>
+                    <button class="offer-btn">Grab Now</button>
+                </div>
+            </div>
+            <div class="offer-card">
+                <img src="offer2.jpg" alt="Offer 2">
+                <div class="offer-details">
+                    <h2>Combo Meal @ ₹299</h2>
+                    <p>Get a delicious combo of starter + main course at just ₹299.</p>
+                    <button class="offer-btn">Order Combo</button>
+                </div>
+            </div>
+            <div class="offer-card">
+                <img src="offer3.png" alt="Offer 3">
+                <div class="offer-details">
+                    <h2>Birthday Bash Deal</h2>
+                    <p>Celebrating your birthday? Get a free dessert on your special day!</p>
+                    <button class="offer-btn">Claim Now</button>
+                </div>
+            </div>
         </div>
-
-        <div class="offer-card">
-            <img src="/images/offer2.jpg" alt="Offer 2" />
-            <h2>Flat 30% Off</h2>
-            <p>On your first online order.</p>
-            <button>Claim Offer</button>
-        </div>
-
-        <div class="offer-card">
-            <img src="/images/offer3.jpg" alt="Offer 3" />
-            <h2>Student Discount</h2>
-            <p>Show your student ID & get 20% off.</p>
-            <button>Claim Offer</button>
-        </div>
-
-        <div class="offer-card">
-            <img src="/images/offer4.jpg" alt="Offer 4" />
-            <h2>Combo Meals</h2>
-            <p>Enjoy meal combos starting at just ₹199.</p>
-            <button>Claim Offer</button>
-        </div>
-    </section>
+    </main>
     <%- include("includes/footer.ejs") %>
 </body>
 </html>

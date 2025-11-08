@@ -14,18 +14,11 @@ app.use(session({
 }));
 
 const connection = mysql.createConnection({
-<<<<<<< HEAD
-  host: 'localhost',
-  user: 'root',
-  database: 'dineflow',
-  password: 'Parv@2004'
-=======
   host: process.env.DB_HOST,
   port: parseInt(process.env.DB_PORT),
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_NAME
->>>>>>> a68478b774ad8cddfe6c1a6f4789959bc9d32a8d
 });
 connection.connect((err) => {
   if (err) {

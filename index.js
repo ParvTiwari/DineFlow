@@ -1,3 +1,4 @@
+require("dotenv").config();
 let express = require("express");
 let path = require("path");
 let app = express();
@@ -7,19 +8,33 @@ const session = require("express-session");
 
 // Session setup
 app.use(session({
-  secret: "dineflow_parv_tiwari",
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false
 }));
 
 const connection = mysql.createConnection({
+<<<<<<< HEAD
   host: 'localhost',
   user: 'root',
   database: 'dineflow',
   password: 'Parv@2004'
+=======
+  host: process.env.DB_HOST,
+  port: parseInt(process.env.DB_PORT),
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME
+>>>>>>> a68478b774ad8cddfe6c1a6f4789959bc9d32a8d
 });
-
-let port = 8080;
+connection.connect((err) => {
+  if (err) {
+    console.error("Database connection failed:", err.stack);
+    return;
+  }
+  console.log("Connected to database.");
+});
+let port = process.env.PORT;
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "/public/CSS")));

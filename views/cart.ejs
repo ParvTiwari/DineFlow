@@ -1,43 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Your Cart | DineFlow</title>
-    <link rel="stylesheet" href="cart.css">
+    <meta charset="UTF-8" />
+    <title>Your Cart - DineFlow</title>
+    <link rel="stylesheet" href="/CSS/cart.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
     <%- include("includes/navBar.ejs") %>
-    <div class="cart-container">
-    <h2>Your Cart</h2>
 
-    <% if (cartItems.length === 0) { %>
-        <p>Your cart is empty 😕</p>
-    <% } else { %>
-        <% cartItems.forEach(item => { %>
-            <div class="cart-item">
-                <div class="item-info">
-                    <h4><%= item.name %></h4>
-                    <p>₹ <%= item.price %></p>
-                </div>
-                <div class="item-actions">
-                    <input type="number" min="1" value="<%= item.quantity %>">
-                    <form method="POST" action="/remove-from-cart">
-                        <input type="hidden" name="itemId" value="<%= item.id %>">
-                        <button type="submit">Remove</button>
-                    </form>
-                </div>
-            </div>
-        <% }) %>
+    <main class="cart-main">
+        <h1>Your Cart</h1>
+        
+        <% if (cartItems.length > 0) { %>
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Dish</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% let grandTotal = 0; %>
+                <% cartItems.forEach(item => { %>
+                    <tr>
+                        <td><%= item.name %></td>
+                        <td><%= item.quantity %></td>
+                        <td>₹<%= item.price %></td>
+                        <td>₹<%= item.quantity * item.price %></td>
+                        <td>
+                            <form action="/cart/remove/<%= item.id %>?_method=DELETE" method="POST">
+                                <button class="remove-btn">X</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% grandTotal += item.quantity * item.price; %>
+                <% }); %>
+            </tbody>
+        </table>
 
-        <div class="cart-total">
-            Total: ₹ <%= cartItems.reduce((total, item) => total + item.price * item.quantity, 0) %>
+        <div class="cart-summary">
+            <h2>Total: ₹<%= grandTotal %></h2>
+            <form action="/checkout" method="POST">
+                <button class="checkout-btn">Proceed to Payment</button>
+            </form>
         </div>
 
-        <form action="/payment" method="GET">
-            <button class="checkout-btn">Checkout</button>
-        </form>
-    <% } %>
-</div>
+        <% } else { %>
+            <h2>Your cart is empty.</h2>
+        <% } %>
+    </main>
+
     <%- include("includes/footer.ejs") %>
 </body>
 </html>

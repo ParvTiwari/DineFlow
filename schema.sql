@@ -19,34 +19,52 @@ CREATE TABLE menu(
     price DECIMAL,
     category VARCHAR(50)
 );
-
+CREATE TABLE tables(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    table_number INT NOT NULL UNIQUE,
+    booking_time DATETIME,
+    is_available BOOLEAN DEFAULT TRUE
+);
+CREATE TABLE cart(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    menu_id INT,
+    quantity INT DEFAULT 1,
+    added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES user(user_id),
+    FOREIGN KEY (menu_id) REFERENCES menu(item_id)
+);
 CREATE TABLE orders(
 	order_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
-    total_amount DECIMAL,
+    table_id INT,
+    total_amount DECIMAL(10, 2),
     order_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    status ENUM('pending', 'preparing', 'served', 'cancelled') DEFAULT 'pending',
-    FOREIGN KEY (user_id) references user(user_id)
+    FOREIGN KEY (user_id) references user(user_id),
+    FOREIGN KEY (table_id) references tables(id)
 );
 
 CREATE TABLE order_items(
 	order_item_id INT AUTO_INCREMENT PRIMARY KEY,
     order_id INT,
-    item_id INT,
+    menu_id INT,
     quantity INT,
-    price_at_time DECIMAL,
-    FOREIGN KEY (order_id) REFERENCES orders(order_id),
-    FOREIGN KEY (item_id) REFERENCES menu(item_id)
+    price DECIMAL(10,2),
+    FOREIGN KEY (order_id) REFERENCES orders(order_id) ON DELETE CASCADE,
+    FOREIGN KEY (menu_id) REFERENCES menu(item_id)
 );
 
-CREATE TABLE table_booking(
-	booking_id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT,
-    booking_time DATETIME,
-    status ENUM('booked', 'completed', 'cancelled') DEFAULT 'booked',
-    FOREIGN KEY (user_id) REFERENCES user(user_id)
+CREATE TABLE payments(
+	payment_id INT PRIMARY KEY,
+    user_id INT NOT NULL,
+    order_id INT NOT NULL,
+    amount DECIMAL(10, 2) NOT NULL,
+    payment_method VARCHAR(50),
+    status ENUM ('success', 'failed', 'pending') DEFAULT 'success',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES user(id),
+    FOREIGN KEY (order_id) REFERENCES orders(id)
 );
-
 CREATE TABLE reviews(
 	review_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
@@ -56,15 +74,6 @@ CREATE TABLE reviews(
     review_date TIMESTAMP DEFAULT current_timestamp
 );
 
-CREATE TABLE payments(
-	payment_id INT PRIMARY KEY,
-    order_id INT,
-    amount DECIMAL,
-    payment_method VARCHAR(50),
-    status ENUM ('success', 'failed', 'pending') DEFAULT 'success',
-    paid_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (order_id) REFERENCES orders(order_id)
-);
 CREATE TABLE about (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,

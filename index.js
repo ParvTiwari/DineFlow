@@ -16,7 +16,7 @@ const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   database: 'dineflow',
-  password: 'mysql@123'
+  password: 'Parv@2004'
 });
 
 let port = 8080;

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    
+    <button id="payBtn">Pay Now</button>
+    
+    <script>
+    document.getElementById('payBtn').onclick = async function () {
+        const res = await fetch('/create-order', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ amount: 500 }), // ₹5.00
+        });
+    
+        // const order = await res.json();
+    
+        const options = {
+            key: 'rzp_live_tt2CZGs6sxwVCG',
+            amount: 88.00,
+            currency: 'INR',
+            name: 'DineFlow',
+            description: 'Restaurant Bill Payment',
+            image: '/logo.png', // optional logo
+            order_id: order.id,
+            handler: function (response) {
+                alert(`Payment ID: ${response.razorpay_payment_id}`);
+                alert(`Order ID: ${response.razorpay_order_id}`);
+                alert(`Signature: ${response.razorpay_signature}`);
+            },
+            theme: { color: '#F37254' },
+        };
+    
+        const rzp = new Razorpay(options);
+        rzp.open();
+    };
+    </script>
+</body>
+</html>

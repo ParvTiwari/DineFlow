@@ -130,7 +130,7 @@ app.get(/.*/, (req, res) => {
 });
 
 app.listen(port, ()=>{
-    console.log(`App is Listening on Port ${port}`);
+    console.log(`App is Listening on Port http://localhost:${port}/home`);
 });
 
 function isLoggedIn(req, res, next) {

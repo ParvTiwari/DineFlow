@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/ParvTiwari/DineFlow#readme",
   "dependencies": {
+    "@supabase/supabase-js": "^2.81.1",
     "dotenv": "^16.3.1",
     "ejs": "^3.1.10",
     "express": "^5.1.0",

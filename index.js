@@ -30,6 +30,10 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
 
+app.get('/', (req, res) => {
+  res.redirect('/home');
+});
+
 app.get('/login', (req, res) => {
   res.render("login.ejs");
 });

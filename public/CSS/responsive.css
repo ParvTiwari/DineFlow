@@ -1,0 +1,186 @@
+/* ==========================================================================
+   Shared responsive styles for DineFlow (live app).
+   Linked from views/includes/navBar.ejs, so it loads on every page AFTER the
+   page-specific stylesheet — letting these rules win same-specificity ties.
+   ========================================================================== */
+
+/* Lay out the nav link group as a flex row (matches the previous look where
+   each link was a direct flex child of <nav>). */
+.nav-menu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Hamburger toggle button: hidden on desktop, shown on small screens. */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.8rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* Never let media force horizontal scrolling. */
+img {
+    max-width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Tablet and below
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    /* Top bar: logo on the left, hamburger on the right. */
+    header nav {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 0;
+        padding: 6px 12px;
+    }
+
+    /* Logo flows inline (it is absolutely positioned on desktop). */
+    nav img,
+    .nav-logo {
+        position: static;
+        height: 42px;
+        margin: 0;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    /* Collapse the link group into a stacked dropdown, toggled by .show. */
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        order: 3;
+        gap: 0;
+        padding-bottom: 6px;
+    }
+
+    .nav-menu.show {
+        display: flex;
+    }
+
+    .nav-menu .nav-links,
+    .nav-menu .logout-btn {
+        display: block;
+        width: 100%;
+        padding: 12px 10px;
+        box-sizing: border-box;
+        text-align: left;
+    }
+
+    .nav-menu form {
+        width: 100%;
+    }
+
+    /* ---- Home page ---- */
+    .bg {
+        height: 60vh;
+    }
+
+    .bg h1 {
+        font-size: 2em;
+        padding: 24px;
+        top: 20px;
+    }
+
+    .contact_us {
+        padding: 16px;
+    }
+
+    .contact_us h2 {
+        font-size: 2em;
+    }
+
+    .details {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        padding: 24px;
+        margin: 24px;
+    }
+
+    /* ---- About page (uses .container inside <main>) ---- */
+    main .container {
+        flex-direction: column;
+        height: auto;
+        padding: 24px;
+        margin: 24px;
+    }
+
+    main .container img {
+        height: auto;
+        width: 100%;
+        margin-top: 16px;
+    }
+
+    /* ---- Menu page ---- */
+    main h2 {
+        margin-left: 0;
+    }
+
+    .menu-item {
+        width: 90%;
+        max-width: 350px;
+        height: auto;
+    }
+
+    /* ---- Offers page ---- */
+    .offer-card {
+        width: 100%;
+        max-width: 340px;
+    }
+
+    /* ---- Cart page (table) ---- */
+    .cart-table {
+        width: 100%;
+    }
+
+    .cart-table th,
+    .cart-table td {
+        padding: 10px 8px;
+        font-size: 0.9em;
+    }
+
+    .cart-main h1 {
+        font-size: 2em;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Phones
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+    .bg h1 {
+        font-size: 1.6em;
+    }
+
+    .menu-item {
+        width: 100%;
+    }
+
+    .review {
+        margin: 24px 16px;
+        padding: 28px 20px;
+    }
+
+    .cart-table th,
+    .cart-table td {
+        padding: 8px 5px;
+        font-size: 0.82em;
+    }
+
+    footer h3 {
+        font-size: 0.95em;
+    }
+}

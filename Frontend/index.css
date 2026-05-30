@@ -118,6 +118,50 @@ header{
     font-weight: 400;
     font-style: normal;
 }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+    nav {
+        flex-wrap: wrap;
+        gap: 0;
+        padding: 6px 12px;
+    }
+    nav img {
+        position: static;
+        height: 42px;
+        margin: 0;
+    }
+    a {
+        padding: 12px;
+    }
+    .bg {
+        height: 60vh;
+    }
+    .bg h1 {
+        font-size: 2em;
+        padding: 24px;
+        top: 20px;
+    }
+    .contact_us {
+        padding: 16px;
+    }
+    .contact_us h2 {
+        font-size: 2em;
+    }
+    .details {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        padding: 24px;
+        margin: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .bg h1 {
+        font-size: 1.6em;
+    }
+}
 #floatRight{
     display: flex;
     gap: 15px;

@@ -81,3 +81,31 @@ header{
     height: 130%;
     border-radius: 10px;
 }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+    nav {
+        flex-wrap: wrap;
+        gap: 0;
+        padding: 6px 12px;
+    }
+    nav img {
+        position: static;
+        height: 42px;
+        margin: 0;
+    }
+    a {
+        padding: 12px;
+    }
+    .container {
+        flex-direction: column;
+        height: auto;
+        padding: 24px;
+        margin: 24px;
+    }
+    .container img {
+        height: auto;
+        width: 100%;
+        margin-top: 16px;
+    }
+}

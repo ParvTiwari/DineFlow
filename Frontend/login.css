@@ -208,3 +208,11 @@
   .container.active .toogle-right {
     transform: translateX(200%);
   }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+    .container {
+        border-radius: 20px;
+        min-height: 520px;
+    }
+}

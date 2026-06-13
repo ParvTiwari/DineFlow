@@ -3,11 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DineFlow – Smart Restaurant System</title>
+    <meta name="description" content="DineFlow is a smart restaurant management system. Browse our menu, grab exclusive offers, and order delicious food online with ease.">
+    <meta name="keywords" content="DineFlow, restaurant management, online food ordering, restaurant menu, dine-in, food offers, smart restaurant system">
+    <meta name="author" content="Parv Tiwari">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#ff9900">
+    <link rel="canonical" href="/home">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/images/logo.png" type="image/png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="DineFlow">
+    <meta property="og:title" content="DineFlow – Smart Restaurant System">
+    <meta property="og:description" content="Browse our menu, grab exclusive offers, and order delicious food online with DineFlow.">
+    <meta property="og:url" content="/home">
+    <meta property="og:image" content="/images/logo.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DineFlow – Smart Restaurant System">
+    <meta name="twitter:description" content="Browse our menu, grab exclusive offers, and order delicious food online with DineFlow.">
+    <meta name="twitter:image" content="/images/logo.png">
+
+    <!-- JSON-LD structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "DineFlow",
+      "description": "A smart restaurant management system for browsing menus, grabbing offers, and ordering food online.",
+      "image": "/images/logo.png",
+      "servesCuisine": "Indian",
+      "telephone": "+91-92851-21000",
+      "hasMenu": "/menu",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "SGSITS, 23 Sir M. Visvesvaraya Marg",
+        "addressLocality": "Indore",
+        "addressRegion": "Madhya Pradesh",
+        "postalCode": "452003",
+        "addressCountry": "IN"
+      }
+    }
+    </script>
+
     <link rel="stylesheet" href="index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-    <title>DineFlow-Smart Restaurant System</title>
 </head>
 <body>
     <%- include("includes/navBar.ejs") %>

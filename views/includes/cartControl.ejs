@@ -1,0 +1,13 @@
+<%# Renders either an ADD button or a "− qty +" stepper for a menu dish.
+    Locals: dish (with item_id, name), q (current quantity in cart). %>
+<div class="cart-control" data-id="<%= dish.item_id %>" data-name="<%= dish.name %>">
+    <% if (q > 0) { %>
+        <div class="qty-stepper">
+            <button type="button" class="step-dec" aria-label="Decrease quantity">&minus;</button>
+            <span class="step-qty"><%= q %></span>
+            <button type="button" class="step-inc" aria-label="Increase quantity">&plus;</button>
+        </div>
+    <% } else { %>
+        <button type="button" class="add-btn">ADD</button>
+    <% } %>
+</div>

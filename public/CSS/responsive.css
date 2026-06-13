@@ -32,6 +32,116 @@ img {
 }
 
 /* --------------------------------------------------------------------------
+   Shared navbar + footer. Lives here (loaded on every page via navBar.ejs) so
+   pages that don't ship their own copy of these rules — e.g. payment and order
+   confirmation — still render the bar consistently. Scoped under `header` so it
+   never touches page content links.
+   -------------------------------------------------------------------------- */
+header {
+    padding: 5px 10px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+header nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    gap: 20px;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(36,34,30,1) 50%, rgba(0,212,255,1) 100%);
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+header .nav-logo {
+    position: absolute;
+    left: 10px;
+    margin-left: 20px;
+    height: 100%;
+    width: auto;
+}
+
+header .nav-links {
+    padding: 20px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1em;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+}
+
+header .nav-links:hover {
+    text-decoration: underline;
+}
+
+header button.logout-btn.nav-links {
+    all: unset;
+    cursor: pointer;
+    padding: 20px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1em;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+header button.logout-btn.nav-links:hover {
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    background-color: rgb(41, 52, 61);
+    color: #fff;
+    padding: 20px 0;
+}
+
+/* Cart count badge in the navbar: a red pill with the item count inside it,
+   floating just past the top-right of the "Cart" label (left:100% + margin
+   keeps a gap so it never overlaps the text, and it grows rightward for 2+
+   digits). Explicit width neutralises page-level generic rules like menu.css's
+   `span { width: 100%; display: flex }`, which would otherwise distort it only
+   on the menu route. */
+.cart-label {
+    position: relative;
+    display: inline-block;
+    width: auto;
+}
+
+.cart-count {
+    position: absolute;
+    left: 100%;
+    top: -10px;
+    margin-left: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    box-sizing: border-box;
+    border-radius: 999px;
+    background: #f02849;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
+/* display:inline-flex overrides the [hidden] attribute, so re-hide explicitly. */
+.cart-count[hidden] {
+    display: none;
+}
+
+/* --------------------------------------------------------------------------
    Tablet and below
    -------------------------------------------------------------------------- */
 @media (max-width: 768px) {

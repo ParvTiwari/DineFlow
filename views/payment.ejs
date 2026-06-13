@@ -5,12 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <link rel="stylesheet" href="payment.css">
-    <title>Payments-Dineflow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <title>Payment - DineFlow</title>
+    <style>
+        .pay-main { max-width: 560px; margin: 40px auto; padding: 0 16px; font-family: 'Josefin Sans', sans-serif; }
+        .pay-card { border: 1px solid #e5e5e5; border-radius: 12px; padding: 24px; box-shadow: 0 4px 16px rgba(0,0,0,.06); }
+        .pay-card h1 { margin-top: 0; }
+        .pay-line { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #eee; }
+        .pay-total { display: flex; justify-content: space-between; font-size: 20px; font-weight: 700; margin-top: 16px; }
+        .pay-btn { width: 100%; margin-top: 20px; padding: 14px; border: none; border-radius: 8px;
+                   background: #ff9900; color: #fff; font-size: 16px; font-weight: 600; cursor: pointer; }
+        .pay-btn:hover { background: #e88a00; }
+        .pay-back { display: inline-block; margin-top: 14px; color: #737373; text-decoration: none; }
+        .pay-note { margin-top: 12px; font-size: 12px; color: #999; text-align: center; }
+    </style>
 </head>
 <body>
-    <button id="payBtn">Pay ₹1</button>
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    <script src="payment.js"></script>
+    <%- include("includes/navBar.ejs") %>
+
+    <main class="pay-main">
+        <div class="pay-card">
+            <h1>Checkout</h1>
+
+            <% cartItems.forEach(item => { %>
+                <div class="pay-line">
+                    <span><%= item.name %> &times; <%= item.quantity %></span>
+                    <span>₹<%= item.price * item.quantity %></span>
+                </div>
+            <% }); %>
+
+            <div class="pay-total">
+                <span>Total</span>
+                <span>₹<%= total %></span>
+            </div>
+
+            <% if (razorpayKey) { %>
+                <button class="pay-btn" id="rzpBtn"
+                        data-name="<%= user.name %>"
+                        data-email="<%= user.email %>"
+                        data-phone="<%= user.phone || '' %>">
+                    Pay ₹<%= total %>
+                </button>
+                <p class="pay-note">Test mode — use a Razorpay test card (e.g. 4111 1111 1111 1111). No real charge.</p>
+            <% } else { %>
+                <form action="/payment/success" method="POST">
+                    <button class="pay-btn" type="submit">Pay ₹<%= total %></button>
+                </form>
+                <p class="pay-note">Demo payment — no real charge is made.</p>
+            <% } %>
+            <a class="pay-back" href="/cart">&larr; Back to cart</a>
+        </div>
+    </main>
+
     <%- include("includes/footer.ejs") %>
+    <% if (razorpayKey) { %>
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script src="/payment.js"></script>
+    <% } %>
 </body>
 </html>

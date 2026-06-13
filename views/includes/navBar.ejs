@@ -1,14 +1,14 @@
-<link rel="stylesheet" href="responsive.css">
+<link rel="stylesheet" href="/responsive.css">
 <header>
         <nav>
-            <img src="logo.png" class="nav-logo" alt="DineFlow" style="justify-content: left;">
+            <img src="/images/logo.png" class="nav-logo" alt="DineFlow" style="justify-content: left;">
             <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">&#9776;</button>
             <div class="nav-menu">
                 <a class="nav-links" href="/home">Home</a>
                 <a class="nav-links" href="/menu">Menu</a>
                 <a class="nav-links" href="/offers">Offers</a>
                 <a class="nav-links" href="/about">About</a>
-                <a class="nav-links" href="/cart">Cart</a>
+                <a class="nav-links cart-link" href="/cart"><span class="cart-label">Cart<span id="cartCount" class="cart-count" hidden></span></span></a>
                 <% if (user) { %>
                     <form action="/logout" method="POST" style="display:inline;">
                         <button class="nav-links logout-btn">Logout</button>
@@ -19,4 +19,4 @@
             </div>
         </nav>
 </header>
-<script src="nav.js"></script>
+<script src="/nav.js"></script>

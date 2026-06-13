@@ -21,7 +21,7 @@
                     <p><%= dish.description %></p>
                     <span>
                         <h4>&#8377; <%= dish.price %></h4>
-                        <button class="add-btn">ADD</button>
+                        <%- include("includes/cartControl.ejs", { dish, q: (cartQuantities[dish.item_id] || 0) }) %>
                     </span>
                 </div>
             <% } %>
@@ -36,7 +36,7 @@
                     <p><%= dish.description %></p>
                     <span>
                         <h4>&#8377; <%= dish.price %></h4>
-                        <button>ADD</button>
+                        <%- include("includes/cartControl.ejs", { dish, q: (cartQuantities[dish.item_id] || 0) }) %>
                     </span>
                 </div>
             <% } %>
@@ -51,12 +51,13 @@
                     <p><%= dish.description %></p>
                     <span>
                         <h4>&#8377; <%= dish.price %></h4>
-                        <button>ADD</button>
+                        <%- include("includes/cartControl.ejs", { dish, q: (cartQuantities[dish.item_id] || 0) }) %>
                     </span>
                 </div>
             <% } %>
         </section>
     </main>
     <%- include("includes/footer.ejs") %>
+    <script src="menu.js"></script>
 </body>
 </html>

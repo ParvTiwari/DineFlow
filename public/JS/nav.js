@@ -14,3 +14,26 @@ document.addEventListener("DOMContentLoaded", () => {
         link.addEventListener("click", () => menu.classList.remove("show"));
     });
 });
+
+// Cart count badge: exposed globally so menu.js can refresh it after adding,
+// and refreshed on every page load so the count is always current.
+window.updateCartBadge = function (count) {
+    const badge = document.getElementById("cartCount");
+    if (!badge) return;
+    if (count > 0) {
+        badge.textContent = count > 99 ? "99+" : count;
+        badge.title = count + (count === 1 ? " item" : " items") + " in cart";
+        badge.hidden = false;
+    } else {
+        badge.textContent = "";
+        badge.removeAttribute("title");
+        badge.hidden = true;
+    }
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+    fetch("/cart/count")
+        .then((res) => res.json())
+        .then((data) => window.updateCartBadge(data.count))
+        .catch(() => {});
+});

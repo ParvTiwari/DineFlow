@@ -37,11 +37,16 @@ app.get('/', (req, res) => {
   res.redirect('/home');
 });
 
-// Resolve the public-facing base URL: explicit override wins, otherwise
-// auto-detect from the request (honours the proxy via "trust proxy" above).
+// Resolve the public-facing base URL (origin only): explicit override wins,
+// otherwise auto-detect from the request (honours the proxy via "trust proxy"
+// above). Any path in SITE_URL is dropped so paths can be appended cleanly.
 function getBaseUrl(req) {
   if (process.env.SITE_URL) {
-    return process.env.SITE_URL.replace(/\/+$/, "");
+    try {
+      return new URL(process.env.SITE_URL).origin;
+    } catch {
+      return process.env.SITE_URL.replace(/\/+$/, "");
+    }
   }
   return `${req.protocol}://${req.get("host")}`;
 }
@@ -124,7 +129,7 @@ app.post("/register", async (req, res) => {
 });
 
 app.get("/home", (req, res) => {
-  res.render("index.ejs", { user: req.session.user });
+  res.render("index.ejs", { user: req.session.user, baseUrl: getBaseUrl(req) });
 });
 
 app.post("/home/review", async (req, res) => {
